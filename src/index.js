@@ -28,7 +28,7 @@ module.exports = router(
     oauth.authorize(
       req,
       res,
-      { AUTHORIZE_URL: process.env.AUTHORIZE_URL },
+      { AUTHORIZE_URL: 'https://github.com/login/oauth/authorize' },
       Object.assign(
         {},
         req.query,
@@ -46,11 +46,11 @@ module.exports = router(
       req,
       res,
       {
-        PROVIDER: process.env.PROVIDER,
+        PROVIDER: 'GitHub',
         CALLBACK_URL: req.query.callback_url || process.env.CALLBACK_URL,
         CLIENT_ID: process.env.CLIENT_ID,
         CLIENT_SECRET: process.env.CLIENT_SECRET,
-        GET_TOKEN_URL: process.env.GET_TOKEN_URL,
+        GET_TOKEN_URL: 'https://github.com/login/oauth/access_token',
       },
       {
         grant_type: 'authorization_code',
